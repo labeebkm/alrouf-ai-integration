@@ -1,0 +1,61 @@
+{
+  "pipeline_status": "success",
+  "mock_mode": false,
+  "rfq": {
+    "sender_name": "Mohammed Al-Farsi <m.alfarsi@desert-infra.ae>",
+    "sender_email": "m.alfarsi@desert-infra.ae",
+    "sender_company": "We are Desert Infrastructure LLC based in Abu Dhabi, UAE.",
+    "sender_phone": "+971 2 555 8890",
+    "sender_country": "UAE",
+    "subject": "Urgent RFQ - Street and Warehouse Lighting Project",
+    "delivery_date": "Before 30th April 2025",
+    "destination_port": "Abu Dhabi, UAE (Port of Khalifa)",
+    "payment_terms": "based in Abu Dhabi, UAE.",
+    "line_items": [
+      {
+        "product_description": "LED Street Light 100W",
+        "quantity": 250,
+        "unit": "units",
+        "notes": null
+      },
+      {
+        "product_description": "LED High Bay 150W",
+        "quantity": 1500,
+        "unit": "units",
+        "notes": null
+      },
+      {
+        "product_description": "LED Panel 60W",
+        "quantity": 800,
+        "unit": "units",
+        "notes": null
+      },
+      {
+        "product_description": "LED Tube 18W",
+        "quantity": 2000,
+        "unit": "units",
+        "notes": null
+      }
+    ],
+    "raw_notes": "\nFrom: Mohammed Al-Farsi <m.alfarsi@desert-infra.ae>\nSubject: Urgent RFQ - Street and Warehouse Lighting Project\n\nDear Sales Team,\n\nWe are Desert Infrastructure LLC based in Abu Dhabi, UAE.\nWe require urgent pricing for a major government project.\n\nContact: Mohammed Al-Farsi, Procurement Director\nPhone: +971 2 555 8890\nEmail: m.alfarsi@desert-infra.ae\n\nWe need the following:\n250 units LED Street Light 100W for highway project\n1500 units LED High Bay 150W for warehouse complex\n800 units LED Panel",
+    "extraction_method": "groq_llama3_enhanced",
+    "confidence": 1.0
+  },
+  "crm": {
+    "contact_id": "MOCK-CONTACT-F89F16AF",
+    "deal_id": "MOCK-DEAL-3202EAB4",
+    "crm_url": null,
+    "mock": true
+  },
+  "attachments": [],
+  "reply_draft": {
+    "subject_en": "RE: Your RFQ – Reference MOCK-DEAL-3202EAB4 | AL ROUF LED",
+    "subject_ar": "RE: طلب عرض الأسعار – مرجع MOCK-DEAL-3202EAB4 | الروف LED",
+    "english": "{'subject': 'Re: Request for Quotation MOCK-DEAL-3202EAB4 from Desert Infrastructure LLC', 'body': 'Dear Mohammed Al-Farsi,\\n\\nThank you for considering AL ROUF LED Lighting Technology Co. Ltd. for your lighting needs. We appreciate the opportunity to provide a quotation for your requirements.\\n\\nWe have received your request for the following items:\\n\\n- LED Street Light 100W: 250 units\\n- LED High Bay 150W: 1500 units\\n- LED Panel 60W: 800 units\\n- LED Tube 18W: 2000 units\\n\\nWe confirm that our delivery date will be before 30th April 2025, with the destination being Abu Dhabi, UAE (Port of Khalifa). Our payment terms are based in Abu Dhabi, UAE.\\n\\nWe will provide a detailed quotation within 1-2 business days. Please do not hesitate to contact us if you require any further information.\\n\\nThank you for your patience and cooperation.\\n\\nBest regards,\\n[Your Name]\\nSales Correspondent\\nAL ROUF LED Lighting Technology Co. Ltd.', 'footer': 'This email is confidential and intended only for the use of the individual or entity to whom it is addressed. If you have received this email in error, please notify us immediately and delete it from your system.'}",
+    "arabic": "{'subject': 'رد على طلب تقدير MOCK-DEAL-3202EAB4 من شركة ديسرت إنفارستروك', 'body': 'السلام عليكم،\\n\\nشكراً على اهتمامكم بمنتجاتنا في شركة الأل روف للتقنيات الضوئية. نتقدم بتقديم تقدير تفصيلي لاحتياجاتكم.\\n\\nنؤكد تلقي طلبكم للاستقبال التالي:\\n\\n- مصباح الشارع الضوئي 100 واط: 250 وحدة\\n- مصباح الباي 150 واط: 1500 وحدة\\n- لوحة الضوء 60 واط: 800 وحدة\\n- أنبوب الضوء 18 واط: 2000 وحدة\\n\\nنؤكد أن تاريخ التسليم سيكون قبل 30 أبريل 2025، مع وجهة أبوظبي، الإمارات العربية المتحدة (ميناء خليفة). شروط الدفع متعلقة بمدينة أبوظبي.\\n\\nسنقدم تقدير تفصيلي خلال 1-2 أيام عمل. لا تتردد في التواصل معنا إذا احتجتم إلى مزيد من المعلومات.\\n\\nشكراً لتعاونكم.\\n\\nأحترامًا,\\n[اسمك]\\nمستشار مبيعات\\nشركة الأل روف للتقنيات الضوئية', 'footer': 'هذا البريد الإلكتروني محمي ومتخصص لاستخدام فرد أو شركة محددين. إذا كان هذا البريد الإلكتروني قد وصل إلىكم بشكل غير متوقع، يرجى إخبارنا بذلك فوراً و حذف البريد من نظامكم.'}"
+  },
+  "alert": {
+    "slack_sent": false,
+    "email_sent": false
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "pipeline_status": "success",
+  "mock_mode": false,
+  "rfq": {
+    "sender_name": "Mohammed Al-Farsi <m.alfarsi@desert-infra.ae>",
+    "sender_email": "m.alfarsi@desert-infra.ae",
+    "sender_company": "We are Desert Infrastructure LLC based in Abu Dhabi, UAE.",
+    "sender_phone": "+971 2 555 8890",
+    "sender_country": "UAE",
+    "subject": "Urgent RFQ - Street and Warehouse Lighting Project",
+    "delivery_date": "Before 30th April 2025",
+    "destination_port": "Abu Dhabi, UAE (Port of Khalifa)",
+    "payment_terms": "based in Abu Dhabi, UAE.",
+    "line_items": [
+      {
+        "product_description": "LED Street Light 100W",
+        "quantity": 250,
+        "unit": "units",
+        "notes": null
+      },
+      {
+        "product_description": "LED High Bay 150W",
+        "quantity": 1500,
+        "unit": "units",
+        "notes": null
+      },
+      {
+        "product_description": "LED Panel 60W",
+        "quantity": 800,
+        "unit": "units",
+        "notes": null
+      },
+      {
+        "product_description": "LED Tube 18W",
+        "quantity": 2000,
+        "unit": "units",
+        "notes": null
+      }
+    ],
+    "raw_notes": "\nFrom: Mohammed Al-Farsi <m.alfarsi@desert-infra.ae>\nSubject: Urgent RFQ - Street and Warehouse Lighting Project\n\nDear Sales Team,\n\nWe are Desert Infrastructure LLC based in Abu Dhabi, UAE.\nWe require urgent pricing for a major government project.\n\nContact: Mohammed Al-Farsi, Procurement Director\nPhone: +971 2 555 8890\nEmail: m.alfarsi@desert-infra.ae\n\nWe need the following:\n250 units LED Street Light 100W for highway project\n1500 units LED High Bay 150W for warehouse complex\n800 units LED Panel",
+    "extraction_method": "groq_llama3_enhanced",
+    "confidence": 1.0
+  },
+  "crm": {
+    "contact_id": "MOCK-CONTACT-83289B23",
+    "deal_id": "MOCK-DEAL-61C1007E",
+    "crm_url": null,
+    "mock": true
+  },
+  "attachments": [],
+  "reply_draft": {
+    "subject_en": "RE: Your RFQ – Reference MOCK-DEAL-61C1007E | AL ROUF LED",
+    "subject_ar": "RE: طلب عرض الأسعار – مرجع MOCK-DEAL-61C1007E | الروف LED",
+    "english": "Dear Mohammed Al-Farsi <m.alfarsi@desert-infra.ae>,\n\nThank you for reaching out to AL ROUF LED Lighting Technology Co. Ltd.\n\nWe have successfully received your Request for Quotation regarding 'Urgent RFQ - Street and Warehouse Lighting Project' and have created a record in our system (Reference: MOCK-DEAL-61C1007E).\n\nOur sales team will review your requirements and prepare a detailed quotation within 1–2 business days.\n\nSummary of your enquiry:\n  • LED Street Light 100W × 250 units\n  • LED High Bay 150W × 1500 units\n  • LED Panel 60W × 800 units\n  • LED Tube 18W × 2000 units\n\nRequested delivery: Before 30th April 2025\n\nShould you have any questions in the meantime, please do not hesitate to contact us.\n\nBest regards,\nAL ROUF LED Lighting Technology Co. Ltd.\nSales & Quotation Team",
+    "arabic": "عزيزي/عزيزتي Mohammed Al-Farsi <m.alfarsi@desert-infra.ae>،\n\nشكراً لتواصلكم مع شركة الروف لتكنولوجيا إضاءة LED.\n\nلقد استلمنا بنجاح طلب عرض الأسعار الخاص بكم بخصوص 'Urgent RFQ - Street and Warehouse Lighting Project' وقمنا بتسجيله في نظامنا (المرجع: MOCK-DEAL-61C1007E).\n\nسيقوم فريق المبيعات لدينا بمراجعة متطلباتكم وإعداد عرض أسعار تفصيلي خلال 1-2 يوم عمل.\n\nملخص استفساركم:\n  • LED Street Light 100W × 250 units\n  • LED High Bay 150W × 1500 units\n  • LED Panel 60W × 800 units\n  • LED Tube 18W × 2000 units\n\nتاريخ التسليم المطلوب: Before 30th April 2025\n\nإذا كان لديكم أي استفسارات في الوقت الحالي، فلا تترددوا في التواصل معنا.\n\nمع أطيب التحيات،\nشركة الروف لتكنولوجيا إضاءة LED\nفريق المبيعات وعروض الأسعار"
+  },
+  "alert": {
+    "slack_sent": false,
+    "email_sent": false
+  }
+}

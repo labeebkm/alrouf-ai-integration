@@ -1,7 +1,7 @@
 """
 RFQ Field Extractor
 Parses an inbound RFQ message (email body or plain text) and extracts
-structured fields using regex + heuristics, with an optional LLM fallback.
+structured fields using regex + heuristics, with Groq LLM enhancement.
 """
 from __future__ import annotations
 
@@ -179,7 +179,7 @@ def extract_rfq(
     Args:
         message_body: Raw email/message body text.
         subject:      Email subject line (optional).
-        use_llm:      If True and OPENAI_API_KEY is set, use LLM for extraction.
+        use_llm:      If True and GROQ_API_KEY is set, use Groq LLM for extraction.
         mock_mode:    Skip LLM calls entirely (for offline/testing).
 
     Returns:
@@ -187,18 +187,18 @@ def extract_rfq(
     """
     rfq = ExtractedRFQ(subject=subject or None)
 
-    rfq.sender_email    = _extract_email(message_body)
-    rfq.sender_name     = _extract_name(message_body)
-    rfq.sender_company  = _extract_company(message_body)
-    rfq.sender_phone    = _extract_phone(message_body)
-    rfq.delivery_date   = _extract_delivery_date(message_body)
+    rfq.sender_email     = _extract_email(message_body)
+    rfq.sender_name      = _extract_name(message_body)
+    rfq.sender_company   = _extract_company(message_body)
+    rfq.sender_phone     = _extract_phone(message_body)
+    rfq.delivery_date    = _extract_delivery_date(message_body)
     rfq.destination_port = _extract_destination(message_body)
-    rfq.payment_terms   = _extract_payment_terms(message_body)
-    rfq.line_items      = _extract_line_items(message_body)
-    rfq.raw_notes       = message_body[:500]
+    rfq.payment_terms    = _extract_payment_terms(message_body)
+    rfq.line_items       = _extract_line_items(message_body)
+    rfq.raw_notes        = message_body[:500]
     rfq.extraction_method = "regex"
 
-    # Optionally enhance with LLM if confidence is low
+    # Enhance with Groq LLM when in live mode
     if use_llm and not mock_mode:
         rfq = _llm_enhance(rfq, message_body)
 
@@ -213,44 +213,70 @@ def extract_rfq(
 
 def _llm_enhance(rfq: ExtractedRFQ, raw_text: str) -> ExtractedRFQ:
     """
-    Use OpenAI to re-extract fields that regex missed.
-    Only called when OPENAI_API_KEY is available and use_llm=True.
+    Use Groq (llama-3.1-8b-instant) to accurately extract all fields.
+    Always overrides line items with LLM results (more accurate than regex).
+    Falls back to regex results if API call fails.
     """
     try:
-        import openai
-        client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-        prompt = f"""Extract the following fields from this RFQ message as JSON.
-Return ONLY valid JSON, no markdown.
+        from groq import Groq
+        client = Groq(api_key=os.environ["GROQ_API_KEY"])
 
-Fields: sender_name, sender_email, sender_company, sender_phone, sender_country,
-delivery_date, destination_port, payment_terms,
-line_items (array of {{product_description, quantity, unit}})
+        prompt = f"""Extract the following fields from this RFQ (Request for Quotation) message as JSON.
+Return ONLY valid JSON with no markdown, no code fences, no explanation.
 
-Message:
-{raw_text[:2000]}
+Fields to extract:
+- sender_name (full name as string, or null)
+- sender_email (email address as string, or null)
+- sender_company (company name only, short form, or null)
+- sender_phone (phone number as string, or null)
+- sender_country (country name or code, or null)
+- delivery_date (date as string, or null)
+- destination_port (port/city/country for delivery as string, or null)
+- payment_terms (payment method and terms as string, or null)
+- line_items: array of objects, each with:
+    - product_description: full product name including wattage e.g. "LED Street Light 100W"
+    - quantity: integer number of units, or null
+    - unit: unit of measure e.g. "pcs", "units", or null
+
+Important: For line_items, include the complete product description with wattage/model.
+
+RFQ Message:
+{raw_text[:3000]}
 """
         resp = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="llama-3.1-8b-instant",
             messages=[{"role": "user", "content": prompt}],
             temperature=0,
-            max_tokens=800,
+            max_tokens=1000,
         )
-        data = json.loads(resp.choices[0].message.content)
+        raw_json = resp.choices[0].message.content.strip()
+        # Strip markdown fences if model adds them despite instructions
+        raw_json = raw_json.strip("```json").strip("```").strip()
+        data = json.loads(raw_json)
 
-        # Merge: only fill fields still missing from regex pass
+        # Always fill scalar fields that regex missed
         for key in ["sender_name", "sender_email", "sender_company",
                     "sender_phone", "sender_country", "delivery_date",
                     "destination_port", "payment_terms"]:
             if not getattr(rfq, key) and data.get(key):
                 setattr(rfq, key, data[key])
 
-        if not rfq.line_items and data.get("line_items"):
+        # Always override line items with Groq results — more accurate than regex
+        if data.get("line_items"):
             rfq.line_items = [
-                RFQLineItem(**item) for item in data["line_items"]
+                RFQLineItem(
+                    product_description=item.get("product_description", ""),
+                    quantity=item.get("quantity"),
+                    unit=item.get("unit"),
+                )
+                for item in data["line_items"]
+                if item.get("product_description")
             ]
 
-        rfq.extraction_method = "llm_enhanced"
+        rfq.extraction_method = "groq_llama3_enhanced"
+        logger.info("Groq extraction successful: %d line items extracted", len(rfq.line_items))
+
     except Exception as exc:
-        logger.warning("LLM enhancement failed, using regex results: %s", exc)
+        logger.warning("Groq enhancement failed, using regex results: %s", exc)
 
     return rfq
