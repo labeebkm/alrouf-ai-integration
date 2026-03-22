@@ -10,13 +10,13 @@
 
 ```
 alrouf-ai-integration/
-├── task1_rfq_crm/          # RFQ → CRM Automation workflow
-├── task2_quotation_service/ # FastAPI Quotation Microservice
-├── task3_rag_workflow/      # Bilingual RAG Knowledge Workflow
-├── docs/                    # Architecture diagrams, notes
-├── scripts/                 # Helper/setup scripts
-├── .env.example             # Environment variable template
-└── README.md                # This file
+├── task1_rfq_crm/           # RFQ → CRM Automation pipeline
+├── task2_quotation_service/  # FastAPI Quotation Microservice
+├── task3_rag_workflow/       # Bilingual RAG Knowledge Workflow
+├── docs/                     # Architecture documentation
+├── scripts/                  # Setup and PDF generation scripts
+├── .env.example              # Environment variable template
+└── README.md                 # This file
 ```
 
 ---
@@ -26,29 +26,38 @@ alrouf-ai-integration/
 ### Prerequisites
 - Python 3.10+
 - Docker & Docker Compose
-- An OpenAI API key (or use offline mocks — see each task's README)
+- A Groq API key for live mode — free at [console.groq.com](https://console.groq.com)
+- All tasks run fully offline in mock mode — no API keys needed
 
-### 1. Clone & configure environment
+### Setup
 
 ```bash
 git clone <your-repo-url>
 cd alrouf-ai-integration
 cp .env.example .env
-# Edit .env and fill in your API keys
+# Edit .env and add your GROQ_API_KEY for live mode
 ```
 
 ---
 
 ## Task 1 – RFQ → CRM Automation
 
-A workflow that ingests an inbound RFQ email/message, extracts structured fields, creates a CRM record (HubSpot or mock), archives attachments, generates a bilingual (English + Arabic) reply draft, and triggers an internal Slack/email alert.
+Processes an inbound RFQ email through a 5-stage pipeline: field extraction → CRM record → attachment archive → bilingual reply → internal alert.
 
-**Stack:** Python · Make.com (or n8n self-hosted) · HubSpot CRM API (mock fallback)
+**Stack:** Python · Groq `llama-3.1-8b-instant` · HubSpot CRM API (mock fallback)
 
 ```bash
 cd task1_rfq_crm
 pip install -r requirements.txt
-python rfq_processor.py --mock   # Run with mock CRM + mock email
+
+# Offline mock mode (no API key needed)
+python rfq_processor.py --mock
+
+# Live mode with real Groq LLM
+python task1_demo_live.py
+
+# Tests
+pytest tests/ -v   # 23 tests
 ```
 
 See [`task1_rfq_crm/README.md`](task1_rfq_crm/README.md) for full details.
@@ -57,20 +66,25 @@ See [`task1_rfq_crm/README.md`](task1_rfq_crm/README.md) for full details.
 
 ## Task 2 – Quotation Microservice
 
-A FastAPI microservice that accepts product/quantity inputs and returns a structured quotation, with full OpenAPI docs, Docker packaging, and test coverage.
+FastAPI microservice that accepts RFQ-style line items and returns structured quotations with tiered pricing, volume discounts, and VAT.
+
+**Stack:** Python · FastAPI · Pydantic v2 · Docker
 
 ```bash
 cd task2_quotation_service
+
 # Option A: Docker (recommended)
 docker-compose up --build
+
 # Option B: Local
 pip install -r requirements.txt
 uvicorn app.main:app --reload
-# Run tests
-pytest tests/ -v
+
+# Tests
+pytest tests/ -v   # 24 tests
 ```
 
-OpenAPI docs available at: `http://localhost:8000/docs`
+OpenAPI docs: `http://localhost:8000/docs`
 
 See [`task2_quotation_service/README.md`](task2_quotation_service/README.md).
 
@@ -78,14 +92,22 @@ See [`task2_quotation_service/README.md`](task2_quotation_service/README.md).
 
 ## Task 3 – Bilingual RAG Knowledge Workflow
 
-A retrieval-augmented generation workflow over 3–5 sample LED lighting product documents. Supports English and Arabic queries, returns citations, and cleanly refuses out-of-scope questions.
+Retrieval-augmented generation over 3 AL ROUF LED product documents. Supports English and Arabic queries, returns source citations, and refuses out-of-scope questions in the query language.
+
+**Stack:** Python · `sentence-transformers` (paraphrase-multilingual-MiniLM-L12-v2) · Groq `llama-3.1-8b-instant` · JSON vector store
 
 ```bash
 cd task3_rag_workflow
 pip install -r requirements.txt
-python ingest.py          # Index documents
-python query.py --mock    # Run sample queries (mock LLM mode)
-pytest tests/ -v
+
+# Offline mock mode (no API key needed)
+python query.py --mock
+
+# Live mode with real embeddings + Groq LLM
+python task3_demo_live.py
+
+# Tests
+pytest tests/ -v   # 26 tests
 ```
 
 See [`task3_rag_workflow/README.md`](task3_rag_workflow/README.md).
@@ -98,35 +120,54 @@ Copy `.env.example` to `.env` and fill in values:
 
 | Variable | Description | Required |
 |---|---|---|
-| `OPENAI_API_KEY` | OpenAI key for LLM calls | Optional (mock fallback) |
+| `GROQ_API_KEY` | Groq API key for LLM calls (Tasks 1 & 3) | Optional (mock fallback) |
+| `GROQ_MODEL` | Groq model name | No (default: `llama-3.1-8b-instant`) |
+| `EMBEDDING_MODEL` | sentence-transformers model name | No (default: `paraphrase-multilingual-MiniLM-L12-v2`) |
 | `HUBSPOT_API_KEY` | HubSpot CRM API key | Optional (mock fallback) |
-| `SLACK_WEBHOOK_URL` | Slack webhook for alerts | Optional (mock fallback) |
-| `MOCK_MODE` | Set to `true` to run fully offline | No (default: false) |
+| `SLACK_WEBHOOK_URL` | Slack webhook for internal alerts | Optional (mock fallback) |
+| `MOCK_MODE` | Set to `true` to run fully offline | No (default: `false`) |
+
+---
+
+## Test Results
+
+All tasks run in offline mock mode — no API keys needed for tests:
+
+```bash
+# Task 1
+cd task1_rfq_crm && pytest tests/ -v       # 23 passed
+
+# Task 2
+cd task2_quotation_service && pytest tests/ -v  # 24 passed
+
+# Task 3
+cd task3_rag_workflow && pytest tests/ -v  # 26 passed
+
+# Total: 73 / 73 passed
+```
 
 ---
 
 ## Architecture Overview
 
-See [`docs/architecture.md`](docs/architecture.md) for full diagrams and decision notes.
+See [`docs/architecture.md`](docs/architecture.md) for full design notes and trade-off analysis.
 
 Key design decisions:
-- **Mock-first design:** Every external dependency has a mock fallback so the project runs offline.
-- **Separation of concerns:** Each task is independently runnable.
-- **Error handling:** All API calls wrapped with retry logic and structured error responses.
-- **Security:** No secrets in code; all via `.env`. Input validation on all endpoints.
+- **Mock-first design:** Every external dependency has a mock fallback — project runs fully offline.
+- **Groq over OpenAI:** Free tier, faster inference, OpenAI-compatible API. No cost for development.
+- **sentence-transformers locally:** Embeddings run on-device — zero API cost, no rate limits, works offline after first download.
+- **Separation of concerns:** Each task is independently runnable with its own requirements.txt.
+- **Security:** No secrets in code — all via `.env`. Input validation on all API endpoints.
 
 ---
 
 ## AI Assistance Disclosure
 
-Per assessment requirements — AI assistance (Claude) was used for:
-- Boilerplate scaffolding of FastAPI app structure
-- Initial prompt templates for bilingual reply generation
-- Test case generation assistance
+Per assessment requirements — full transparency on AI tool usage:
 
-Personally implemented by candidate:
-- All business logic, field extraction, and routing decisions
-- CRM integration and mock design
-- RAG chunking strategy and citation logic
-- Docker configuration and CI setup
-- Architecture decisions and trade-off analysis
+| Area | AI Used For | Candidate's Own Work |
+|---|---|---|
+| Task 1 | Claude for initial module scaffolding | All regex patterns, Groq integration, pipeline orchestration, error handling |
+| Task 2 | Claude for FastAPI boilerplate | Pricing tier algorithm, all business rules, Docker config, all 24 tests |
+| Task 3 | Claude for chunking structure suggestion | Embedding design, cosine similarity retriever, scope guard, bilingual detection, all 26 tests |
+| Groq integration | None — fully candidate implemented | Groq API wiring for Tasks 1 & 3, prompt engineering, response parsing |
