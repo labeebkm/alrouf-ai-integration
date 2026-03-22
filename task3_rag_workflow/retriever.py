@@ -34,15 +34,18 @@ def _cosine_similarity(a: List[float], b: List[float]) -> float:
         return 0.0
     return dot / (n_a * n_b)
 
+_MODEL_CACHE = {}
 
 def _embed_query(query: str, mock: bool = True) -> List[float]:
     if mock:
         return _mock_embedding(query)
-    import openai
-    client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-    model  = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
-    resp   = client.embeddings.create(model=model, input=[query])
-    return resp.data[0].embedding
+    from sentence_transformers import SentenceTransformer
+    model_name = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
+    if model_name not in _MODEL_CACHE:
+        _MODEL_CACHE[model_name] = SentenceTransformer(model_name)
+    model = _MODEL_CACHE[model_name]
+    emb = model.encode([query], normalize_embeddings=True)
+    return emb[0].tolist()
 
 
 class Retriever:

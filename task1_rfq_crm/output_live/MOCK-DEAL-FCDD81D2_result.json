@@ -1,0 +1,73 @@
+{
+  "pipeline_status": "success",
+  "mock_mode": false,
+  "rfq": {
+    "sender_name": "Mohammed Al-Farsi <m.alfarsi@desert-infra.ae>",
+    "sender_email": "m.alfarsi@desert-infra.ae",
+    "sender_company": "We are Desert Infrastructure LLC based in Abu Dhabi, UAE.",
+    "sender_phone": "+971 2 555 8890",
+    "sender_country": null,
+    "subject": "Urgent RFQ - Street and Warehouse Lighting Project",
+    "delivery_date": null,
+    "destination_port": "Abu Dhabi, UAE (Port of Khalifa)",
+    "payment_terms": "based in Abu Dhabi, UAE.",
+    "line_items": [
+      {
+        "product_description": "LED Street Light W for highway project",
+        "quantity": 250,
+        "unit": null,
+        "notes": null
+      },
+      {
+        "product_description": "LED High Bay W for warehouse complex",
+        "quantity": 1500,
+        "unit": null,
+        "notes": null
+      },
+      {
+        "product_description": "LED Panel W for office blocks",
+        "quantity": 800,
+        "unit": null,
+        "notes": null
+      },
+      {
+        "product_description": "LED Tube W for corridors and parking",
+        "quantity": 2000,
+        "unit": null,
+        "notes": null
+      },
+      {
+        "product_description": "Required delivery: Before th April",
+        "quantity": 30,
+        "unit": null,
+        "notes": null
+      },
+      {
+        "product_description": "Payment: LC at sight preferred, or % TT advance acceptable",
+        "quantity": 30,
+        "unit": null,
+        "notes": null
+      }
+    ],
+    "raw_notes": "\nFrom: Mohammed Al-Farsi <m.alfarsi@desert-infra.ae>\nSubject: Urgent RFQ - Street and Warehouse Lighting Project\n\nDear Sales Team,\n\nWe are Desert Infrastructure LLC based in Abu Dhabi, UAE.\nWe require urgent pricing for a major government project.\n\nContact: Mohammed Al-Farsi, Procurement Director\nPhone: +971 2 555 8890\nEmail: m.alfarsi@desert-infra.ae\n\nWe need the following:\n250 units LED Street Light 100W for highway project\n1500 units LED High Bay 150W for warehouse complex\n800 units LED Panel",
+    "extraction_method": "regex",
+    "confidence": 0.9
+  },
+  "crm": {
+    "contact_id": "MOCK-CONTACT-D4103F6F",
+    "deal_id": "MOCK-DEAL-FCDD81D2",
+    "crm_url": null,
+    "mock": true
+  },
+  "attachments": [],
+  "reply_draft": {
+    "subject_en": "RE: Your RFQ – Reference MOCK-DEAL-FCDD81D2 | AL ROUF LED",
+    "subject_ar": "RE: طلب عرض الأسعار – مرجع MOCK-DEAL-FCDD81D2 | الروف LED",
+    "english": "Dear Mohammed Al-Farsi <m.alfarsi@desert-infra.ae>,\n\nThank you for reaching out to AL ROUF LED Lighting Technology Co. Ltd.\n\nWe have successfully received your Request for Quotation regarding 'Urgent RFQ - Street and Warehouse Lighting Project' and have created a record in our system (Reference: MOCK-DEAL-FCDD81D2).\n\nOur sales team will review your requirements and prepare a detailed quotation within 1–2 business days.\n\nSummary of your enquiry:\n  • LED Street Light W for highway project × 250\n  • LED High Bay W for warehouse complex × 1500\n  • LED Panel W for office blocks × 800\n  • LED Tube W for corridors and parking × 2000\n  • Required delivery: Before th April × 30\n  • Payment: LC at sight preferred, or % TT advance acceptable × 30\n\nShould you have any questions in the meantime, please do not hesitate to contact us.\n\nBest regards,\nAL ROUF LED Lighting Technology Co. Ltd.\nSales & Quotation Team",
+    "arabic": "عزيزي/عزيزتي Mohammed Al-Farsi <m.alfarsi@desert-infra.ae>،\n\nشكراً لتواصلكم مع شركة الروف لتكنولوجيا إضاءة LED.\n\nلقد استلمنا بنجاح طلب عرض الأسعار الخاص بكم بخصوص 'Urgent RFQ - Street and Warehouse Lighting Project' وقمنا بتسجيله في نظامنا (المرجع: MOCK-DEAL-FCDD81D2).\n\nسيقوم فريق المبيعات لدينا بمراجعة متطلباتكم وإعداد عرض أسعار تفصيلي خلال 1-2 يوم عمل.\n\nملخص استفساركم:\n  • LED Street Light W for highway project × 250\n  • LED High Bay W for warehouse complex × 1500\n  • LED Panel W for office blocks × 800\n  • LED Tube W for corridors and parking × 2000\n  • Required delivery: Before th April × 30\n  • Payment: LC at sight preferred, or % TT advance acceptable × 30\n\nإذا كان لديكم أي استفسارات في الوقت الحالي، فلا تترددوا في التواصل معنا.\n\nمع أطيب التحيات،\nشركة الروف لتكنولوجيا إضاءة LED\nفريق المبيعات وعروض الأسعار"
+  },
+  "alert": {
+    "slack_sent": false,
+    "email_sent": false
+  }
+}

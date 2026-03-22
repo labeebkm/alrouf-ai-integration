@@ -102,20 +102,20 @@ def embed_chunks(chunks: List[Chunk], mock: bool = True) -> List[Chunk]:
         logger.info("Mock embeddings generated for %d chunks", len(chunks))
         return chunks
 
-    # Real OpenAI embeddings
-    import openai
-    client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-    model = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
-    batch_size = 100
+    # Real sentence-transformers embeddings (runs locally, no API cost)
+    from sentence_transformers import SentenceTransformer
+    model_name = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
+    logger.info("Loading sentence-transformer model: %s", model_name)
+    model = SentenceTransformer(model_name)
 
-    for i in range(0, len(chunks), batch_size):
-        batch = chunks[i:i + batch_size]
-        texts = [c.text for c in batch]
-        resp = client.embeddings.create(model=model, input=texts)
-        for chunk, emb_obj in zip(batch, resp.data):
-            chunk.embedding = emb_obj.embedding
+    texts = [c.text for c in chunks]
+    embeddings = model.encode(texts, show_progress_bar=True, normalize_embeddings=True)
 
-    logger.info("OpenAI embeddings generated for %d chunks (model=%s)", len(chunks), model)
+    for chunk, emb in zip(chunks, embeddings):
+        chunk.embedding = emb.tolist()
+
+    logger.info("sentence-transformers embeddings generated for %d chunks (model=%s, dim=%d)",
+                len(chunks), model_name, len(chunks[0].embedding))
     return chunks
 
 

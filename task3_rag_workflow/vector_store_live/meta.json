@@ -1,0 +1,11 @@
+{
+  "doc_count": 3,
+  "chunk_count": 25,
+  "embedding_dim": 384,
+  "mock_embeddings": false,
+  "documents": [
+    "doc1_panel_street_specs.txt",
+    "doc2_warranty_shipping.txt",
+    "doc3_highbay_pricing_faq.txt"
+  ]
+}

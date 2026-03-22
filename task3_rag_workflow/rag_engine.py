@@ -132,10 +132,10 @@ def _llm_answer(
     chunks: List[RetrievedChunk],
     language: str,
 ) -> tuple[str, int]:
-    """Call OpenAI to synthesise an answer. Returns (answer, tokens_used)."""
-    import openai
-    client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-    model  = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+    """Call Groq (llama-3.1-8b-instant) to synthesise an answer. Returns (answer, tokens_used)."""
+    from groq import Groq
+    client = Groq(api_key=os.environ["GROQ_API_KEY"])
+    model  = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
 
     context_parts = []
     for i, chunk in enumerate(chunks, 1):
@@ -159,13 +159,13 @@ def _llm_answer(
 
 
 def _estimate_cost(tokens: int, model: str) -> float:
-    """Rough cost estimate based on public pricing (USD per 1M tokens)."""
+    """Groq pricing: llama-3.1-8b-instant is ~$0.05/1M tokens (effectively free tier)."""
     rates = {
-        "gpt-4o-mini":    0.30,
-        "gpt-4o":         5.00,
-        "gpt-4-turbo":   10.00,
+        "llama-3.1-8b-instant": 0.05,
+        "llama-3.3-70b-versatile": 0.59,
+        "mixtral-8x7b-32768": 0.24,
     }
-    rate = rates.get(model, 0.30)
+    rate = rates.get(model, 0.05)
     return round(tokens * rate / 1_000_000, 6)
 
 
@@ -181,7 +181,7 @@ class RAGEngine:
         self._mock     = mock
         self._top_k    = top_k
         self._retriever = Retriever(store_path=store_path, mock=mock)
-        self._model    = "mock" if mock else os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+        self._model    = "mock" if mock else os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
 
     def query(self, question: str) -> RAGResponse:
         """

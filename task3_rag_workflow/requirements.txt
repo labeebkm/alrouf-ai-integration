@@ -1,6 +1,7 @@
 python-dotenv==1.0.1
 pytest==8.3.2
-# Optional — only needed for live mode
-openai>=1.30.0
-# Optional — for production vector store
-# chromadb>=0.5.0
+# Real LLM — Groq (free tier, fast)
+groq>=0.9.0
+# Real embeddings — sentence-transformers (runs locally, no API cost)
+sentence-transformers>=3.0.0
+
