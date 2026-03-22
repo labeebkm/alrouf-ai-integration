@@ -1,0 +1,114 @@
+name: CI — All Tasks
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-task1:
+    name: Task 1 — RFQ Pipeline Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          cd task1_rfq_crm
+          pip install -r requirements.txt
+
+      - name: Run tests
+        env:
+          MOCK_MODE: "true"
+        run: |
+          cd task1_rfq_crm
+          python -m pytest tests/ -v --tb=short
+
+  test-task2:
+    name: Task 2 — Quotation Microservice Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          cd task2_quotation_service
+          pip install -r requirements.txt
+
+      - name: Run tests
+        env:
+          MOCK_MODE: "true"
+        run: |
+          cd task2_quotation_service
+          python -m pytest tests/ -v --tb=short
+
+  test-task3:
+    name: Task 3 — RAG Workflow Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          cd task3_rag_workflow
+          pip install -r requirements.txt
+
+      - name: Run tests
+        env:
+          MOCK_MODE: "true"
+        run: |
+          cd task3_rag_workflow
+          python -m pytest tests/ -v --tb=short
+
+  smoke-test-pipelines:
+    name: Smoke Test — End-to-End Pipelines
+    runs-on: ubuntu-latest
+    needs: [test-task1, test-task2, test-task3]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install all dependencies
+        run: |
+          pip install python-dotenv fastapi uvicorn pydantic pydantic-settings httpx
+
+      - name: Smoke — Task 1 pipeline (mock)
+        run: |
+          cd task1_rfq_crm
+          python rfq_processor.py --mock
+
+      - name: Smoke — Task 2 API (mock)
+        run: |
+          cd task2_quotation_service
+          uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+          sleep 3
+          curl -sf http://localhost:8000/health
+          curl -sf -X POST http://localhost:8000/quotes/ \
+            -H "Content-Type: application/json" \
+            -d '{"customer_name":"CI Test","customer_email":"ci@test.com","line_items":[{"product_sku":"LED-PANEL-60W","quantity":100}]}'
+
+      - name: Smoke — Task 3 RAG (mock)
+        run: |
+          cd task3_rag_workflow
+          pip install python-dotenv
+          python query.py --mock --question "What is the warranty period for LED street lights?"

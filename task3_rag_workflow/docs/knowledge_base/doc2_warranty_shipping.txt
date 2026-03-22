@@ -1,0 +1,82 @@
+DOCUMENT: AL ROUF Warranty & After-Sales Policy
+Version: 2024-01
+
+Standard Warranty Terms
+------------------------
+All AL ROUF LED products carry a standard manufacturer's warranty from the date of delivery:
+
+| Product Category       | Warranty Period |
+|------------------------|-----------------|
+| Indoor Commercial      | 5 years         |
+| Outdoor / Street       | 7 years         |
+| High Bay / Industrial  | 5 years         |
+| Decorative / Retail    | 3 years         |
+| Smart Control Modules  | 2 years         |
+
+Warranty Coverage
+-----------------
+The warranty covers manufacturing defects in materials and workmanship, including:
+- Driver/power supply failures
+- LED module lumen depreciation below L70 within rated lifespan
+- Housing corrosion under normal operating conditions
+
+The warranty does NOT cover:
+- Physical damage, vandalism, or improper installation
+- Damage from voltage spikes not within specified input range (unless surge-protected model)
+- Products operated outside specified temperature range
+- Unauthorised modifications or repairs
+
+Claim Process
+-------------
+1. Contact AL ROUF support at warranty@alrouf.com with the order number, batch code, and description of fault.
+2. AL ROUF will issue an RMA (Return Material Authorisation) number within 3 business days.
+3. Return defective units freight prepaid to designated service centre.
+4. AL ROUF will repair or replace at its discretion within 15 business days of receiving the RMA.
+
+Replacement during warranty period is FOB Shenzhen. Outbound freight for replacements is covered by AL ROUF for orders over USD 5,000.
+
+Extended Warranty
+-----------------
+Extended warranty (up to 10 years) available on request for projects over 500 units.
+Contact your regional sales manager for terms.
+
+---
+
+DOCUMENT: AL ROUF Shipping & Lead Time Policy
+Version: 2024-02
+
+Standard Lead Times
+--------------------
+Lead times are counted from receipt of 30% advance payment and confirmed purchase order:
+
+| Order Size            | Standard Lead Time |
+|-----------------------|--------------------|
+| < 100 units           | 7–10 business days |
+| 100–500 units         | 15–20 business days|
+| 500–2,000 units       | 25–30 business days|
+| > 2,000 units         | 35–45 business days|
+
+Custom colour temperatures, special optics, or OEM branding add 5–10 business days.
+
+Incoterms
+----------
+Default shipping terms: FOB Shenzhen.
+Other available Incoterms: EXW, CIF, CFR (negotiable for orders > USD 20,000).
+
+Shipping Methods
+----------------
+- Sea freight (FCL/LCL): Recommended for orders > 200 units.
+- Air freight: Available for urgent orders; additional charges apply.
+- Express courier (DHL/FedEx): For samples and orders < 20 units.
+
+Customs & Documentation
+------------------------
+AL ROUF provides: Commercial Invoice, Packing List, Bill of Lading, Certificate of Origin,
+and test reports (CE/RoHS/CB) as standard. Additional certifications (UL, DLC, SAA)
+available on request with 5 business days notice.
+
+Minimum Order Quantity (MOQ)
+-----------------------------
+Most products: 50 units per SKU per order.
+LED tubes and downlights: 200 units per SKU.
+Sample orders (pre-production): 1–5 units at standard unit price.

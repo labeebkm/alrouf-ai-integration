@@ -1,0 +1,52 @@
+{
+  "LED-PANEL-60W": {
+    "name": "LED Panel Light 60W",
+    "base_price": 14.00,
+    "min_qty": 1,
+    "tiers": [
+      {"min_qty": 100, "unit_price": 13.00},
+      {"min_qty": 500, "unit_price": 12.00},
+      {"min_qty": 1000, "unit_price": 10.50}
+    ]
+  },
+  "LED-STREET-100W": {
+    "name": "LED Street Light 100W",
+    "base_price": 45.00,
+    "min_qty": 1,
+    "tiers": [
+      {"min_qty": 50, "unit_price": 42.00},
+      {"min_qty": 200, "unit_price": 38.00},
+      {"min_qty": 500, "unit_price": 34.00}
+    ]
+  },
+  "LED-HIGHBAY-150W": {
+    "name": "LED High Bay Light 150W",
+    "base_price": 55.00,
+    "min_qty": 1,
+    "tiers": [
+      {"min_qty": 50, "unit_price": 52.00},
+      {"min_qty": 200, "unit_price": 47.00},
+      {"min_qty": 500, "unit_price": 42.00}
+    ]
+  },
+  "LED-DOWNLIGHT-12W": {
+    "name": "LED Downlight 12W",
+    "base_price": 5.50,
+    "min_qty": 1,
+    "tiers": [
+      {"min_qty": 500, "unit_price": 4.80},
+      {"min_qty": 2000, "unit_price": 4.20},
+      {"min_qty": 5000, "unit_price": 3.80}
+    ]
+  },
+  "LED-TUBE-18W": {
+    "name": "LED Tube Light T8 18W",
+    "base_price": 4.00,
+    "min_qty": 1,
+    "tiers": [
+      {"min_qty": 500, "unit_price": 3.50},
+      {"min_qty": 2000, "unit_price": 3.10},
+      {"min_qty": 5000, "unit_price": 2.80}
+    ]
+  }
+}

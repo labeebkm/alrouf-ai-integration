@@ -1,0 +1,77 @@
+DOCUMENT: AL ROUF LED High Bay Light Series — Product Specification
+SKU: LED-HIGHBAY-150W | Category: Industrial / High Bay
+
+Overview
+--------
+The AL ROUF LED High Bay Light (150W) targets warehouses, factories, gymnasiums,
+and large retail halls with ceiling heights between 6 m and 15 m.
+It replaces 400W MH/HPS high-bay fixtures at significant energy savings.
+
+Technical Specifications
+------------------------
+- Wattage: 150W (±5%)
+- Luminous Flux: 19,500 lm
+- Luminous Efficacy: 130 lm/W
+- Colour Temperature: 4000K / 5700K
+- CRI: ≥80
+- Beam Angle: 60° / 90° / 120° (specify on order)
+- Input Voltage: 100–277V AC, 50/60Hz
+- Power Factor: ≥0.95
+- THD: <10%
+- Surge Protection: 6kV
+- Dimensions: Ø385×210 mm (round UFO style)
+- Weight: 4.5 kg
+- IP Rating: IP65
+- IK Rating: IK08
+- Operating Temperature: -30°C to +50°C
+- Lifespan: ≥80,000 hours (L70)
+- Warranty: 5 years
+
+Certifications
+--------------
+CE, RoHS, CB, TUV, SAA (optional), DLC Premium (optional for North America)
+
+Mounting Options
+----------------
+- Hook mount (standard — 1.5 m hook included)
+- Pendant rod (optional — specify length)
+- Surface/flange mount bracket (optional)
+- Yoke bracket for wall/beam mounting (optional)
+
+Dimming
+-------
+Compatible with 0-10V dimming and DALI-2. Integrated motion sensor option available (+15W standby).
+
+Applications
+------------
+Warehouses, distribution centres, manufacturing plants, gymnasiums, supermarkets.
+
+---
+
+DOCUMENT: AL ROUF Pricing & Payment FAQ
+
+Q: What is the pricing structure?
+A: AL ROUF uses tiered volume pricing. Unit prices decrease at standard breakpoints of 50, 100,
+500, 1,000, and 5,000 units. Exact pricing is provided in formal quotations valid for 30 days.
+
+Q: What currencies does AL ROUF accept?
+A: USD is the primary trading currency. EUR, GBP, and AED are also accepted for orders over
+USD 10,000 with prior agreement.
+
+Q: What payment terms are available?
+A: Standard terms are 30% advance payment with purchase order confirmation, and 70% balance
+before shipment. Letter of Credit (LC at sight) is available for orders over USD 50,000.
+Established distributors may negotiate 30-day net terms after 6 months of trading history.
+
+Q: Are samples available?
+A: Yes. Pre-production samples are available at standard unit price plus courier cost.
+Sample lead time is 3–5 business days for standard products.
+
+Q: Are OEM / private label services offered?
+A: Yes. AL ROUF offers OEM packaging, custom colour boxes, firmware branding for smart
+products, and printed labels. MOQ for OEM branding is 500 units. Lead time +7 business days.
+
+Q: Is there a distributor programme?
+A: Yes. AL ROUF operates a tiered distributor programme (Silver / Gold / Platinum) with
+exclusive territory options, marketing support, and enhanced warranty pass-through.
+Contact sales@alrouf.com for the distributor application form.

@@ -1,0 +1,6 @@
+python-dotenv==1.0.1
+pytest==8.3.2
+# Optional — only needed for live mode
+openai>=1.30.0
+# Optional — for production vector store
+# chromadb>=0.5.0

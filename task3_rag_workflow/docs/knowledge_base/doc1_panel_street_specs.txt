@@ -1,0 +1,89 @@
+DOCUMENT: AL ROUF LED Panel Light Series — Product Specification
+SKU: LED-PANEL-60W | Category: Indoor Commercial
+
+Overview
+--------
+The AL ROUF LED Panel Light (60W) is a premium indoor luminaire designed for office, retail,
+and commercial environments. It delivers 6,600 lumens with a colour rendering index (CRI) of ≥90,
+providing accurate colour representation and visual comfort.
+
+Technical Specifications
+------------------------
+- Wattage: 60W (±5%)
+- Luminous Flux: 6,600 lm
+- Luminous Efficacy: 110 lm/W
+- Colour Temperature: 3000K / 4000K / 6500K (specify on order)
+- CRI: ≥90
+- Beam Angle: 120°
+- Input Voltage: 100–277V AC, 50/60Hz
+- Power Factor: ≥0.95
+- THD: <10%
+- Dimensions: 600×600×12 mm
+- Weight: 2.8 kg
+- IP Rating: IP40 (indoor use)
+- IK Rating: IK06
+- Operating Temperature: -20°C to +45°C
+- Lifespan: ≥50,000 hours (L70)
+- Warranty: 5 years
+
+Certifications
+--------------
+CE, RoHS, CB, SAA (Australia), DLC (North America option)
+
+Installation
+------------
+Recessed mounting into standard 600×600 mm suspended ceiling grid.
+Compatible with DALI, 0-10V, and PWM dimming systems.
+Minimum ceiling height: 2.5 m.
+
+Applications
+------------
+Open-plan offices, retail stores, schools, hospitals, hotel lobbies.
+
+---
+
+DOCUMENT: AL ROUF LED Street Light Series — Product Specification
+SKU: LED-STREET-100W | Category: Outdoor / Street Lighting
+
+Overview
+--------
+The AL ROUF LED Street Light (100W) is engineered for roadway and area illumination.
+It replaces 250W HPS/MH fixtures while delivering superior photometric performance.
+
+Technical Specifications
+------------------------
+- Wattage: 100W (±5%)
+- Luminous Flux: 13,000 lm
+- Luminous Efficacy: 130 lm/W
+- Colour Temperature: 4000K / 5700K
+- CRI: ≥70
+- Beam Optics: Type II / Type III (configurable)
+- Input Voltage: 100–277V AC, 50/60Hz
+- Power Factor: ≥0.95
+- Surge Protection: 10kV
+- Dimensions: 580×270×90 mm
+- Weight: 5.2 kg
+- IP Rating: IP66
+- IK Rating: IK09
+- Operating Temperature: -40°C to +55°C
+- Lifespan: ≥100,000 hours (L70)
+- Warranty: 7 years
+
+Certifications
+--------------
+CE, RoHS, ENEC, UL (optional), IEC 62471 (photobiological safety)
+
+Mounting
+--------
+Slip-fitter: 40–60 mm diameter poles.
+Arm reach: 0–15° tilt adjustment.
+Optional: 7-pin NEMA/ZHAGA socket for smart controls.
+
+Smart Controls Compatibility
+-----------------------------
+Compatible with TALQ, DALI-2, and proprietary NB-IoT wireless dimming systems.
+Supports individual and group scheduling, energy monitoring, and fault reporting.
+
+Applications
+------------
+Urban roads, highways, parking lots, industrial areas, ports.
